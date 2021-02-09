@@ -33,5 +33,5 @@ receiveMsgBtn.addEventListener('click', async () => {
         credentials: 'same-origin',
     })
     .then(response => response.json())
-    .then(json => receiveMsgTxt.value = json.replace(',', '\n'));
+    .then(json => receiveMsgTxt.value = json);
 });
