@@ -1,0 +1,12 @@
+html(lang='en')
+	head
+		title Node subs to gcp Experiment
+	body
+		.publishMsg
+			textarea(class='publishText', cols="30", rows="10")
+			button(class='publish') publish
+		.receiveMsgs
+			textarea(class='receiveText', cols="30", rows="10")
+			button(class='receive') display received
+		script(type= 'module')
+			include ../assets/index.js
