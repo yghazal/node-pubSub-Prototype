@@ -1,5 +1,5 @@
 const express = require('express');
-const {serveIndex, publishMessage, getMessages} = require('./server/serveIndex')
+const {serveIndex, publishMessage, getMessages, deleteSubscription, subscribeToNewSubscription} = require('./server/serveIndex')
 const port = 8080;
 
 const app = express();
@@ -7,6 +7,7 @@ const app = express();
 main();
 
 async function main() {
+	subscribeToNewSubscription();
 	app.use('./assets', express.static('assets'));
 
 	app.set('views', './views');
@@ -21,4 +22,7 @@ async function main() {
 	})
 }
 
+process.on('exit', async() => {await deleteSubscription()});
 
+//catches ctrl+c event
+process.on('SIGINT', async() => {await deleteSubscription()});
